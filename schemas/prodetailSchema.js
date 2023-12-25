@@ -24,3 +24,4 @@ const prodetailSchema = mongoose.Schema({
     ],
   },
 });
+module.exports = mongoose.model("product_detail", prodetailSchema);

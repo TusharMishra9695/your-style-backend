@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const foooter = mongoose.Schema({
+const foooterSchema = mongoose.Schema({
   left_sec: {
     brand_image: { type: String },
     quote: { type: String },
@@ -19,3 +19,4 @@ const foooter = mongoose.Schema({
     subs: { type: String },
   },
 });
+module.exports = mongoose.model("footer", foooterSchema);

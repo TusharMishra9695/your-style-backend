@@ -17,24 +17,29 @@ app.use(express.json());
 // });
 
 app.get("/home", async (req, resp) => {
+  dbConnect("header");
   let headerData = await Header.find();
   resp.send(headerData);
 });
-// app.get("/footer", async (req, resp) => {
-//   let footerData = await Footer.find();
-//   resp.send(footerData);
-// });
-// app.get("/product_detail", async (req, resp) => {
-//   let productdetailData = await ProductDetail.find();
-//   resp.send(productdetailData);
-// });
-// app.get("/product", async (req, resp) => {
-//   let productData = await Product.find();
-//   resp.send(productData);
-// });
-// app.get("/cart", async (req, resp) => {
-//   let cartData = await Cart.find();
-//   resp.send(cartData);
-// });
+app.get("/footer", async (req, resp) => {
+  dbConnect("footer");
+  let footerData = await Footer.find();
+  resp.send(footerData);
+});
+app.get("/product_detail", async (req, resp) => {
+  dbConnect("product_detail");
+  let productdetailData = await ProductDetail.find();
+  resp.send(productdetailData);
+});
+app.get("/products", async (req, resp) => {
+  dbConnect("products");
+  let productData = await Product.find();
+  resp.send(productData);
+});
+app.get("/cart", async (req, resp) => {
+  dbConnect("cart");
+  let cartData = await Cart.find();
+  resp.send(cartData);
+});
 
 app.listen(5000);

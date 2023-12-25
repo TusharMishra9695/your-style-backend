@@ -25,3 +25,4 @@ const productSchema = mongoose.Schema({
   },
   total_products: { type: Number },
 });
+module.exports = mongoose.model("products", productSchema);
