@@ -1,7 +1,6 @@
 const { MongoClient } = require("mongodb");
-const url = "mongodb://localhost:27017";
-const database_name = "your-style";
-const client = new MongoClient(url);
+const database_name = process.env.MONGODB_NAME;
+const client = new MongoClient(process.env.MONGODB_URL);
 
 async function dbConnect() {
   let result = await client.connect();
