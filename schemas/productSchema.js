@@ -14,7 +14,7 @@ const productSchema = mongoose.Schema({
       price: { type: Number },
       discounted_price: { type: Number },
       category: { type: String },
-      rating: { type: Number },
+      rating: { type: Number, required: true },
     },
   ],
   sorting: {
