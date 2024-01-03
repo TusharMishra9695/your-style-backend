@@ -1,45 +1,27 @@
 const express = require("express");
-const app = express();
 require("dotenv").config();
-const dbConnect = require("./mongodb");
 require("./config");
-const Header = require("./schemas/headerSchema");
-const Footer = require("./schemas/footerSchema");
-const Product = require("./schemas/productSchema");
-const ProductDetail = require("./schemas/prodetailSchema");
-const Cart = require("./schemas/cartSchema");
+const app = express();
+var cors = require("cors");
+const dbConnect = require("./mongodb");
+const homeRouter = require("./routes/home");
+const footerRouter = require("./routes/footer");
+const cartRouter = require("./routes/cart");
+const productRouter = require("./routes/product");
+const prodetailRouter = require("./routes/prodetail");
+const login = require("./routes/login");
+const signup = require("./routes/signup");
+
 app.use(express.json());
 
-// app.post("/home", async (req, resp) => {
-//   let data = new Header(req.body);
-//   const result = await data.save();
-//   resp.send(result);
-// });
+app.use(cors());
 
-app.get("/home", async (req, resp) => {
-  dbConnect("header");
-  let headerData = await Header.find();
-  resp.send(headerData);
-});
-app.get("/footer", async (req, resp) => {
-  dbConnect("footer");
-  let footerData = await Footer.find();
-  resp.send(footerData);
-});
-app.get("/product_detail", async (req, resp) => {
-  dbConnect("product_detail");
-  let productdetailData = await ProductDetail.find();
-  resp.send(productdetailData);
-});
-app.get("/products", async (req, resp) => {
-  dbConnect("products");
-  let productData = await Product.find();
-  resp.send(productData);
-});
-app.get("/cart", async (req, resp) => {
-  dbConnect("cart");
-  let cartData = await Cart.find();
-  resp.send(cartData);
-});
+app.use("/home", homeRouter);
+app.use("/footer", footerRouter);
+app.use("/cart", cartRouter);
+app.use("/product", productRouter);
+app.use("/product-detail", prodetailRouter);
+app.use("/login", login);
+app.use("/signup", signup);
 
 app.listen(5000);
