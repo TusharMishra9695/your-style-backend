@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Header = require("../schemas/headerSchema");
+const { handleGetHome } = require("../controllers/home");
 
-router.get("/", async (req, resp) => {
-  let headerData = await Header.find();
-  resp.send(headerData);
-});
+router.get("/", handleGetHome);
 
 module.exports = router;

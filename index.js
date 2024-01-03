@@ -2,8 +2,6 @@ const express = require("express");
 require("dotenv").config();
 require("./config");
 const app = express();
-var cors = require("cors");
-const dbConnect = require("./mongodb");
 const homeRouter = require("./routes/home");
 const footerRouter = require("./routes/footer");
 const cartRouter = require("./routes/cart");
@@ -11,10 +9,6 @@ const productRouter = require("./routes/product");
 const prodetailRouter = require("./routes/prodetail");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
-
-app.use(express.json());
-
-app.use(cors());
 
 app.use("/home", homeRouter);
 app.use("/footer", footerRouter);

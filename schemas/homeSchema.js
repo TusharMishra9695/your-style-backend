@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const headerSchema = mongoose.Schema({
+const homeSchema = mongoose.Schema({
   nav: {
     image: { type: String },
     pages: { type: [String] },
@@ -34,4 +34,4 @@ const headerSchema = mongoose.Schema({
     },
   ],
 });
-module.exports = mongoose.model("header", headerSchema);
+module.exports = mongoose.model("header", homeSchema);
