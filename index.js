@@ -10,6 +10,7 @@ const prodetailRouter = require("./routes/prodetail");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
 
+app.use("/", homeRouter);
 app.use("/home", homeRouter);
 app.use("/footer", footerRouter);
 app.use("/cart", cartRouter);

@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Cart = require("../schemas/cartSchema");
+const { handleGetCarts } = require("../controllers/cart");
 
-router.get("/", async (req, resp) => {
-  let cartData = await Cart.find();
-  resp.send(cartData);
-});
+router.get("/", handleGetCarts);
 
 module.exports = router;

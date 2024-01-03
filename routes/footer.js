@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Footer = require("../schemas/footerSchema");
+const { handleGetFooter } = require("../controllers/footer");
 
-router.get("/", async (req, resp) => {
-  let footerData = await Footer.find();
-  resp.send(footerData);
-});
+router.get("/", handleGetFooter);
 
 module.exports = router;

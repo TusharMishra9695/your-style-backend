@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../schemas/productSchema");
+const { handleGetProducts } = require("../controllers/product");
 
-router.get("/", async (req, resp) => {
-  let productData = await Product.find();
-  resp.send(productData);
-});
+router.get("/", handleGetProducts);
 
 module.exports = router;
