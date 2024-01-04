@@ -2,8 +2,18 @@ const express = require("express");
 require("dotenv").config();
 require("./config");
 const app = express();
+var bodyParser = require("body-parser");
+var cors = require("cors");
+
+app.use(cors());
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
 const homeRouter = require("./routes/home");
-const footerRouter = require("./routes/footer");
 const cartRouter = require("./routes/cart");
 const productRouter = require("./routes/product");
 const prodetailRouter = require("./routes/prodetail");
@@ -12,7 +22,6 @@ const signup = require("./routes/signup");
 
 app.use("/", homeRouter);
 app.use("/home", homeRouter);
-app.use("/footer", footerRouter);
 app.use("/cart", cartRouter);
 app.use("/product", productRouter);
 app.use("/product-detail", prodetailRouter);

@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 const homeSchema = mongoose.Schema({
   nav: {
-    image: { type: String },
-    pages: { type: [String] },
-    subtotal: { type: Number },
+    brand_logo: { type: [String] },
+    pages_name: { type: [String] },
   },
   top_sec: {
     main_quote: { type: String },
-    sec_quote: { type: String },
+    offer_quote: { type: String },
     background: { type: String },
   },
   mid_sec: {
@@ -33,5 +32,24 @@ const homeSchema = mongoose.Schema({
       description: { type: String },
     },
   ],
+  footer: {
+    left_sec: {
+      brand_image: { type: String },
+      quote: { type: String },
+    },
+    mid_sec: {
+      her: {
+        heading: { type: String },
+        links: { type: [String] },
+      },
+      him: {
+        heading: { type: String },
+        links: { type: [String] },
+      },
+    },
+    rgt_sec: {
+      subs: { type: String },
+    },
+  },
 });
 module.exports = mongoose.model("header", homeSchema);
