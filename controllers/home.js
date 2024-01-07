@@ -1,8 +1,12 @@
 const Home = require("../schemas/homeSchema");
 
 async function handleGetHome(req, resp) {
-  let homeData = await Home.find();
-  resp.send(homeData);
+  try {
+    let homeData = await Home.find();
+    resp.send(homeData);
+  } catch (error) {
+    console.log(error, "error");
+  }
 }
 
 module.exports = {

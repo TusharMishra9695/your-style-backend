@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+const navFooterRouter = require("./routes/navFooter");
 const homeRouter = require("./routes/home");
 const cartRouter = require("./routes/cart");
 const productRouter = require("./routes/product");
@@ -20,6 +21,7 @@ const prodetailRouter = require("./routes/prodetail");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
 
+app.use("/nav-footer", navFooterRouter);
 app.use("/", homeRouter);
 app.use("/home", homeRouter);
 app.use("/cart", cartRouter);

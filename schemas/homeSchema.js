@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const homeSchema = mongoose.Schema({
-  nav: {
-    brand_logo: { type: [String] },
-    pages_name: { type: [String] },
-  },
+  // nav: {
+  //   brand_logo: { type: [String] },
+  //   pages_name: { type: [String] },
+  // },
   top_sec: {
     main_quote: { type: String },
     offer_quote: { type: String },
