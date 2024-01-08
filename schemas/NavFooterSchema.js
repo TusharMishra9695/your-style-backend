@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const NavFooterSchema = mongoose.Schema({
   nav: {
-    brand_logo: { type: String },
+    brand_logo: { type: String, required: true },
     pages_name: [
       {
-        page_category: { type: String }, // lke men ,women
-        category_logo: { type: String },
+        page_category: { type: String, required: true }, // lke men ,women
+        category_logo: { type: String, required: true },
         sub_categories: [
           // like under 10 years
           {
-            name: { type: String },
+            name: { type: String, required: true },
           },
         ],
       },
