@@ -1,7 +1,10 @@
+const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const productListingSchema = mongoose.Schema(
   {
+    _id: ObjectId,
+    title: { type: String, required: true },
     queue: { type: [String], required: true },
     sub: { type: String, required: true },
     availability: { type: Boolean, required: true },
@@ -17,7 +20,6 @@ const productListingSchema = mongoose.Schema(
         img_link: { type: String, required: true },
       },
     ],
-    title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, requied: true },
     discounted_price: { type: Number, required: true },
