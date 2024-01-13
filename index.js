@@ -20,6 +20,8 @@ const productRouter = require("./routes/product");
 const prodetailRouter = require("./routes/prodetail");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
+const user = require("./routes/user");
+const { restrictToLoggedInUserOnly } = require("./middlewares/auth");
 
 app.use("/nav-footer", navFooterRouter);
 app.use("/", homeRouter);
@@ -29,5 +31,5 @@ app.use("/product", productRouter);
 app.use("/product-detail", prodetailRouter);
 app.use("/login", login);
 app.use("/signup", signup);
-
+app.use("/user", restrictToLoggedInUserOnly, user);
 app.listen(5000);

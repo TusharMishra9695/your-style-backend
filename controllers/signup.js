@@ -1,24 +1,20 @@
 const Signup = require("../schemas/signupSchema");
 
 async function handlePostSignup(req, resp) {
-  const { username, email } = req.body;
+  const { contact, password } = req.body;
   try {
     let finduser = await Signup.findOne({
-      username,
-      email,
+      contact,
     });
     if (finduser) {
-      resp.send({ message: "Username & Email already taken" });
+      resp.send({ message: "Mobile Number already registered" });
     } else {
       let data = new Signup(req.body);
-      const result = await data.save();
-      resp.send({ result: result, message: "Sign Up Successfully !" });
+      await data.save();
+      resp.send({ message: "Sign Up Successfully !" });
     }
   } catch (e) {
-    const message = `${e.keyValue.username ? e.keyValue.username : ""}${
-      e.keyValue.email ? e.keyValue.email : ""
-    } already taken`;
-    resp.send({ message: message });
+    resp.send("some network issue");
   }
 }
 

@@ -4,19 +4,21 @@ function setUser(user) {
   return jwt.sign(
     {
       _id: user._id,
-      email: user.email,
+      contact: user.contact,
     },
-    secret
+    process.env.MONGODB_SECRET
   );
 }
 function verifyUser(token) {
   if (!token) return null;
   try {
     return jwt.verify(token, process.env.MONGODB_SECRET);
-  } catch (error) {
-    return null;
+  } catch (e) {
+    console.log(e, "error");
+    return e;
   }
 }
 module.exports = {
   setUser,
+  verifyUser,
 };
